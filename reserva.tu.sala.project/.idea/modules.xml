@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ReservaTuSala - ANDROID.iml" filepath="$PROJECT_DIR$/ReservaTuSala - ANDROID.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reserva.tu.sala.project.iml" filepath="$PROJECT_DIR$/reserva.tu.sala.project.iml" />
     </modules>
   </component>
 </project>

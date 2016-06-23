@@ -8,4 +8,14 @@
     <string name="action_settings">Settings</string>
 
     <string name="login">LOGIN</string>
+
+    <string name="dogs">PERROS</string>
+    <string name="cats">GATOS</string>
+    <string name="fishes">PECES</string>
+    <string name="question1">Que tipo de animales te gustan?</string>
+
+    <string name="question2">Te gusta comerlos?</string>
+    <string name="yes">SI</string>
+    <string name="no">NO</string>
+    <string name="sometimes">A VECES</string>
 </resources>
