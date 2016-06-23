@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jjcouoh.reservatusala.CheckBoxActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    android:text="@string/question1"
+    />
+    <CheckBox
+        android:id="@+id/checkboxDogs"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="22sp"
+    android:text="@string/dogs"
+    />
+    <CheckBox
+        android:id="@+id/checkboxCats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/cats"
+        />
+    <CheckBox
+        android:id="@+id/checkboxFishes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="@string/fishes"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/question2"
+        />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RadioButton
+            android:id="@+id/radio_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yes"
+            android:onClick="selectRadioButton"
+            />
+        <RadioButton
+            android:id="@+id/radio_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no"
+            android:onClick="selectRadioButton"/>
+        <RadioButton
+            android:id="@+id/radio_sometimes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sometimes"
+            android:onClick="selectRadioButton"/>
+    </RadioGroup>
+
+    <ToggleButton
+        android:id="@+id/toogleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="SI"
+        android:textOff="NO"
+        android:checked="false"
+        />
+
+    <Switch
+        android:id="@+id/switchs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar tus gustos"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
