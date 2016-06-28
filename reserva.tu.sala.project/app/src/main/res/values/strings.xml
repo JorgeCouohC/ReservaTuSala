@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ReservaTuSala</string>
+    <string name="app_name">Reserva Tu Sala</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_application">Reserva tu sala</string>
     <string name="subtitle_main_activity">Inicio</string>
@@ -9,7 +9,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="login">LOGIN</string>
     <string name="navigation_drawer_home">Inicio</string>
     <string name="navigation_drawer_reservations">Mis reservaciones</string>
     <string name="navigation_drawer_logout">Cerrar sesión</string>
@@ -17,4 +16,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- LOGIN -->
+    <string name="login">ENTRAR</string>
+    <string name="EditTextNombreUsuario">Nombre de Usuario</string>
+    <string name="EditTextContrasena">Contraseña</string>
 </resources>
