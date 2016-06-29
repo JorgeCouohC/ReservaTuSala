@@ -13,16 +13,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jjcouoh.fragment.DatePickerFragment;
 import com.jjcouoh.fragment.TimePickerFragment;
+import com.jjcouoh.util.CircleTransform;
 import com.jjcouoh.util.Util;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePickerFragment.NoticeDialogListener {
 
+    MyappApplication app;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,20 +35,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                //DatePickerFragment dp = new DatePickerFragment();
-                //dp.show(getSupportFragmentManager(), "DATEPICKER");
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerFragment tp = DatePickerFragment.newInstance(null, year, month,day);
-                tp.show(getSupportFragmentManager(), "TIMEPICKER");
-            }
-        });
+        app = (MyappApplication) getApplicationContext();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -53,6 +45,19 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        ImageView imageViewProfile = (ImageView) headerView.findViewById(R.id.imageViewProfile);
+        TextView textViewName = (TextView) headerView.findViewById(R.id.textViewName);
+        TextView textViewEmail =(TextView) headerView.findViewById(R.id.textViewEmail);
+
+        String name = app.getStringRegisterValuePreferences(MyappApplication.APP_VALUE_NAME);
+        String email = app.getStringRegisterValuePreferences(MyappApplication.APP_VALUE_EMAIL);
+        String picture = app.getStringRegisterValuePreferences(MyappApplication.APP_VALUE_PICTURE);
+        textViewName.setText(name);
+        textViewEmail.setText(email);
+
+        Picasso.with(this).load(picture).transform(new CircleTransform()).into(imageViewProfile);
     }
 
     @Override

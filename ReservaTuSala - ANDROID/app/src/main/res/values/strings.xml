@@ -18,4 +18,8 @@
     <string name="yes">SI</string>
     <string name="no">NO</string>
     <string name="sometimes">A VECES</string>
+
+    <!-- FACEBOOOK API -->
+    <string name="facebook_app_id">1703739646552556</string>
+    <string name="facebook_app_authorities">com.facebook.app.FacebookContentProvider1703739646552556</string>
 </resources>
