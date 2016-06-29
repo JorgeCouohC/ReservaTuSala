@@ -12,10 +12,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.jjcouoh.fragment.DatePickerFragment;
+import com.jjcouoh.fragment.TimePickerFragment;
+import com.jjcouoh.util.CircleTransform;
+import com.jjcouoh.util.Util;
+import com.squareup.picasso.Picasso;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DatePickerFragment.NoticeDialogListener {
 
+    MyappApplication app;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,14 +35,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        app = (MyappApplication) getApplicationContext();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +45,19 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        ImageView imageViewProfile = (ImageView) headerView.findViewById(R.id.imageViewProfile);
+        TextView textViewName = (TextView) headerView.findViewById(R.id.textViewName);
+        TextView textViewEmail =(TextView) headerView.findViewById(R.id.textViewEmail);
+
+        String name = app.getStringRegisterValuePreferences(MyappApplication.APP_VALUE_NAME);
+        String email = app.getStringRegisterValuePreferences(MyappApplication.APP_VALUE_EMAIL);
+        String picture = app.getStringRegisterValuePreferences(MyappApplication.APP_VALUE_PICTURE);
+        textViewName.setText(name);
+        textViewEmail.setText(email);
+
+        Picasso.with(this).load(picture).transform(new CircleTransform()).into(imageViewProfile);
     }
 
     @Override
@@ -83,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            Util.sendTo(MainActivity.this, CheckBoxActivity.class);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -97,5 +115,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+
     }
 }
