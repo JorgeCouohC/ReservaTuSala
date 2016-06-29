@@ -12,13 +12,13 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     private NoticeDialogListener mListener;
 
-    public static DatePickerFragment newInstance(Long dateLimit, int year, int month, int day) {
+    public static DatePickerFragment newInstance( int year, int month, int day) {
         DatePickerFragment fragment = new DatePickerFragment();
         Bundle args = new Bundle();
         args.putInt("year", year);
         args.putInt("month", month);
         args.putInt("day", day);
-        args.putLong("dateLimit", dateLimit);
+        //args.putLong("dateLimit", dateLimit);
         fragment.setArguments(args);
         return fragment;
     }
@@ -28,10 +28,10 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int year = getArguments().getInt("year");
         int month = getArguments().getInt("month");
         int day = getArguments().getInt("day");
-        Long dateLimit = getArguments().getLong("dateLimit");
+        //Long dateLimit = getArguments().getLong("dateLimit");
         DatePickerDialog dpd =  new DatePickerDialog(getActivity(), this, year, month, day);
-        if(dateLimit!=null)
-            dpd.getDatePicker().setMinDate(dateLimit);
+        //if(dateLimit!=null)
+        //    dpd.getDatePicker().setMinDate(dateLimit);
         return dpd;
     }
 

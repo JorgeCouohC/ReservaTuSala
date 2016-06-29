@@ -1,14 +1,24 @@
 package com.jjcouoh.reservatusala;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.jjcouoh.util.Util;
+import com.sromku.simple.fb.Permission;
+import com.sromku.simple.fb.SimpleFacebook;
+import com.sromku.simple.fb.entities.Profile;
+import com.sromku.simple.fb.listeners.OnLoginListener;
+import com.sromku.simple.fb.listeners.OnProfileListener;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
     private MyappApplication app;
+    private SimpleFacebook mSimpleFacebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +28,67 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void doLogin(View view){
-        app.registerLogIn();
-        Util.sendAndFinish(this, MainActivity.class);
+        mSimpleFacebook.login(onLoginListener);
     }
+
+    public void onResume(){
+        super.onResume();
+        mSimpleFacebook = SimpleFacebook.getInstance(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mSimpleFacebook.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private OnLoginListener onLoginListener = new OnLoginListener() {
+
+        public void onLogin(String accessToken, List<Permission> acceptedPermissions, List<Permission> declinedPermissions) {
+            // change the state of the button or do whatever you want
+            Profile.Properties properties = new Profile.Properties.Builder()
+                    .add(Profile.Properties.ID)
+                    .add(Profile.Properties.NAME)
+                    .add(Profile.Properties.EMAIL)
+                    .add(Profile.Properties.PICTURE)
+                    .build();
+            mSimpleFacebook.getProfile(properties, onProfileListener);
+        }
+
+        @Override
+        public void onCancel() {
+            // user canceled the dialog
+        }
+
+        @Override
+        public void onFail(String reason) {
+            // failed to login
+        }
+
+        @Override
+        public void onException(Throwable throwable) {
+            // exception from facebook
+        }
+
+    };
+    OnProfileListener onProfileListener = new OnProfileListener() {
+        @Override
+        public void onComplete(Profile profile) {
+            app.registerLogIn(profile);
+            Util.sendAndFinish(LoginActivity.this, MainActivity.class);
+        }
+
+        @Override
+        public  void onThinking(){
+        }
+
+        @Override
+        public void onFail(String reason){
+        }
+        @Override
+        public void onException(Throwable throwable){
+            super.onException(throwable);
+        }
+
+    };
 }
