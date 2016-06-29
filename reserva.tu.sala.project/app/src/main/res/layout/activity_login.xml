@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jjcouoh.reservatusala.LoginActivity">
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/EditTextNombreUsuario"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/EditTextNombreUsuario"
+        android:textColorHint="@color/colorPrimaryDark"
+        />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/EditTextContrasena"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/EditTextNombreUsuario"
+        android:hint="@string/EditTextContrasena"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorPrimaryDark"
+        />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:onClick="doLogin"
+        android:id="@+id/button"
+        android:layout_below="@id/EditTextContrasena"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/button_login"
+        android:textColor="@color/colorTextIcons"
+        />
+</RelativeLayout>
