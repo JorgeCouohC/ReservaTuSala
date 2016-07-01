@@ -43,9 +43,9 @@ RecyclerView rvSalas;
         sala1.setImagenUrl("http://www.escritoriosysillasparaoficina.com/images/salas%20de%20juntas.jpg");
 
         Sala sala2 = new Sala();
-        sala1.setNombre("Sala 1");
-        sala1.setCapacidad("10");
-        sala1.setImagenUrl("http://abbamuebles.com.mx/media/images/productos/salas_de_juntas(12).jpg");
+        sala2.setNombre("Sala 1");
+        sala2.setCapacidad("10");
+        sala2.setImagenUrl("http://abbamuebles.com.mx/media/images/productos/salas_de_juntas(12).jpg");
         salas.add(sala1);
         salas.add(sala2);
         setupRecyclerView(rvSalas, salas);
