@@ -2,6 +2,7 @@ package com.jjcouoh.reservatusala;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class RecyclerListaSalasAdpater extends RecyclerView.Adapter<RecyclerList
     Sala current;
     ImageLoader imageLoader ;
     Context context;
+    CardView cvListSalas;
     public RecyclerListaSalasAdpater(Context context, ArrayList<Sala> data)
     {
         if(context==null) return;
@@ -69,6 +71,7 @@ public class RecyclerListaSalasAdpater extends RecyclerView.Adapter<RecyclerList
         public MyViewHolder(View itemView) {
             super(itemView);
             //Obtener los controles
+            cvListSalas = (CardView)itemView.findViewById(R.id.cvListSalas);
            tvNombre = (TextView)itemView.findViewById(R.id.tvNombre);
             tvCapacidad = (TextView)itemView.findViewById(R.id.tvListItemSalasCapacidad);
            imgSala = (NetworkImageView) itemView.findViewById(R.id.imgSala);
@@ -80,6 +83,14 @@ public class RecyclerListaSalasAdpater extends RecyclerView.Adapter<RecyclerList
                     v.getContext().startActivity(intent);
                 }
             });
+            cvListSalas.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), DetallesSalaActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+
         }
 
         public void setListeners(){
